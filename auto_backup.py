@@ -25,7 +25,7 @@ class AutoBackup(plugins.Plugin):
         self.ready = True
         logging.info("AUTO-BACKUP: Successfully loaded.")
 
-    def on_internet_available(self, agent):
+    def on_sleep(self, agent):
         if not self.ready:
             return
 

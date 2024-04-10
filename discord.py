@@ -34,8 +34,17 @@ class Discord(plugins.Plugin):
         self.ready = True
         logging.info("Discord: plugin loaded")
 
-    # called when there's available internet
-    def on_internet_available(self, agent):
+    def grateful(self, agent):
+        self.send_message(agent)
+    def peer_detected(self, agent):
+        self.send_message(agent)
+    def unread_inbox(self, agent):
+        self.send_message(agent)
+    def internet_available(self, agent):
+        self.send_message(agent)
+        
+    # called upon various statuses
+    def send_message(self, agent):
         if not self.ready:
             return
 
