@@ -42,6 +42,8 @@ class Discord(plugins.Plugin):
         self.send_message(agent)
     def internet_available(self, agent):
         self.send_message(agent)
+    def wifi_update(self, agent):
+        self.send_message(agent)
         
     # called upon various statuses
     def send_message(self, agent):
