@@ -44,6 +44,11 @@ class PwnClock(plugins.Plugin):
             ui.add_element('clock', LabeledValue(color=BLACK, label='', value='-/-/-\n-:--',
                                                  position=pos,
                                                  label_font=fonts.Small, text_font=fonts.Small))
+        elif ui.is_waveshare27inch():
+            pos = (145, 138) if memenable else (215, 138)
+            ui.add_element('clock', LabeledValue(color=BLACK, label='', value='-/-/-\n-:--',
+                                                 position=pos,
+                                                 label_font=fonts.Small, text_font=fonts.Small))
 
     def on_ui_update(self, ui):
         now = datetime.datetime.now()
