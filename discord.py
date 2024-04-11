@@ -35,19 +35,23 @@ class Discord(plugins.Plugin):
         logging.info("Discord: plugin loaded")
 
     def on_grateful(self, agent):
+        logging.info("Discord on grateful")
         self.send_message(agent)
     def on_peer_detected(self, agent):
+        logging.info("Discord on peer detected")
         self.send_message(agent)
     def on_unread_inbox(self, agent):
+        logging.info("Discord on unread inbox")
         self.send_message(agent)
     def on_internet_available(self, agent):
+        logging.info("Discord on internet available")
         self.send_message(agent)
     def on_wifi_update(self, agent):
+        logging.info("Discord on wifi update")
         self.send_message(agent)
         
     # called upon various statuses
     def send_message(self, agent):
-        logging.info("You got Discord!");
         if not self.ready:
             return
 
