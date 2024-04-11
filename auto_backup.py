@@ -31,9 +31,11 @@ class AutoBackup(plugins.Plugin):
             return
 
         if self.options['max_tries'] and self.tries >= self.options['max_tries']:
+            logging.info("Tries exceeded")
             return
 
         if self.status.newer_then_days(self.options['interval']):
+            logging.info("Days exceeded")
             return
 
         # Only backup existing files to prevent errors
