@@ -25,8 +25,8 @@ class AutoBackup(plugins.Plugin):
         self.ready = True
         logging.info("AUTO-BACKUP: Successfully loaded.")
 
-    def on_wifi_update(self, agent):
-        logging.info("You got auto backup!");
+    def on_internet_available(self, agent):
+        logging.info("You got auto backup!")
         if not self.ready:
             return
 
