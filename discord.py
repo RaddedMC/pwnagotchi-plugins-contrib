@@ -34,15 +34,15 @@ class Discord(plugins.Plugin):
         self.ready = True
         logging.info("Discord: plugin loaded")
 
-    def grateful(self, agent):
+    def on_grateful(self, agent):
         self.send_message(agent)
-    def peer_detected(self, agent):
+    def on_peer_detected(self, agent):
         self.send_message(agent)
-    def unread_inbox(self, agent):
+    def on_unread_inbox(self, agent):
         self.send_message(agent)
-    def internet_available(self, agent):
+    def on_internet_available(self, agent):
         self.send_message(agent)
-    def wifi_update(self, agent):
+    def on_wifi_update(self, agent):
         self.send_message(agent)
         
     # called upon various statuses
