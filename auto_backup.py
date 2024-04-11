@@ -26,16 +26,13 @@ class AutoBackup(plugins.Plugin):
         logging.info("AUTO-BACKUP: Successfully loaded.")
 
     def on_internet_available(self, agent):
-        logging.info("You got auto backup!")
         if not self.ready:
             return
 
         if self.options['max_tries'] and self.tries >= self.options['max_tries']:
-            logging.info("Tries exceeded")
             return
 
         if self.status.newer_then_days(self.options['interval']):
-            logging.info("Days exceeded")
             return
 
         # Only backup existing files to prevent errors

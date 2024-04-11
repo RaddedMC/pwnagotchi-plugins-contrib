@@ -33,33 +33,25 @@ class Discord(plugins.Plugin):
 
         self.ready = True
         logging.info("Discord: plugin loaded")
-
-    def on_grateful(self, agent):
-        logging.info("Discord on grateful")
-        self.send_message(agent)
-    def on_peer_detected(self, agent):
-        logging.info("Discord on peer detected")
-        self.send_message(agent)
-    def on_unread_inbox(self, agent):
-        logging.info("Discord on unread inbox")
-        self.send_message(agent)
-    def on_internet_available(self, agent):
-        logging.info("Discord on internet available")
-        self.send_message(agent)
-    def on_wifi_update(self, agent):
-        logging.info("Discord on wifi update")
-        self.send_message(agent)
         
-    # called upon various statuses
-    def send_message(self, agent):
+    # called when there's available internet
+    def on_internet_available(self, agent):
+        logging.info("Discord called")
         if not self.ready:
             return
+        logging.info("Discord is ready")
 
         config = agent.config()
         display = agent.view()
+        
+        logging.info("Discord has config and display")
+        
         last_session = agent.last_session
+        
+        logging.info("Discord has session")
 
         if last_session.is_new() and last_session.handshakes > 0:
+            logging.info ("Discord has session; new with handshakes")
             try:
                 from discord import Webhook, RequestsWebhookAdapter, File
             except ImportError as e:
@@ -95,3 +87,5 @@ class Discord(plugins.Plugin):
             except Exception as e:
                 logging.exception("Discord: error while sending message")
                 logging.debug(e)
+        else:
+            logging.info("Discord has session where is_new " + str(last_session.is_new()) + " and last handshakes are " + str(last_session.handshakes))
