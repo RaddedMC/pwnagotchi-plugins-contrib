@@ -47,6 +47,7 @@ class Discord(plugins.Plugin):
         
     # called upon various statuses
     def send_message(self, agent):
+        logging.info("You got Discord!");
         if not self.ready:
             return
 
